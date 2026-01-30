@@ -70,7 +70,7 @@ export default function BranchesMap({ branches, selectedBranch, onSelect }: Prop
 
   // When card is clicked, pan to that branch
   useEffect(() => {
-    if (!mapRef.current || !selectedBranch?.latitude) return;
+    if (!mapRef.current || !selectedBranch?.latitude || !selectedBranch?.longitude) return;
 
     mapRef.current.panTo({
       lat: +selectedBranch.latitude,
