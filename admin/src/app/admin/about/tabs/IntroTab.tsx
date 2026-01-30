@@ -775,9 +775,9 @@ export default function IntroTab({ onSave, loading = false }: IntroTabProps) {
                     )
 
                     return (
-                      <div 
+                      <div
                         key={index}
-                        ref={(el) => (itemRefs.current[index] = el)}
+                        ref={(el) => { if (el) itemRefs.current[index] = el; }}
                         data-index={index}
                         className="relative flex flex-col md:flex-row items-center md:items-start group"
                       >

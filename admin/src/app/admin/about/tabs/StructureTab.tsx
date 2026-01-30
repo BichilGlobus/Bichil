@@ -324,7 +324,13 @@ function autoLayoutTree(nodes: Node[]): Node[] {
 /* ----------------------------------
    MAIN COMPONENT
 -----------------------------------*/
-export default function StructureTab() {
+export default function StructureTab({ 
+  onSave, 
+  loading 
+}: { 
+  onSave?: (data: any) => void
+  loading?: boolean 
+}) {
   const [editingNode, setEditingNode] = useState<Node | null>(null)
   const [editLabel, setEditLabel] = useState('')
   const [isLoaded, setIsLoaded] = useState(false)

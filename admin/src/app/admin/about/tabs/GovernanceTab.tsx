@@ -256,7 +256,13 @@ const initialFormData = {
   type: 'shareholder' as GovernancePerson['type']
 }
 
-export default function GovernanceTab() {
+export default function GovernanceTab({ 
+  onSave, 
+  loading 
+}: { 
+  onSave?: (data: GovernancePerson[]) => void
+  loading?: boolean 
+}) {
   const [governance, setGovernance] = useState<GovernancePerson[]>(demoGovernance)
   const [lang, setLang] = useState<'mn' | 'en'>('mn')
   const [isSaving, setIsSaving] = useState(false)

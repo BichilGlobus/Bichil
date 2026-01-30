@@ -6,11 +6,12 @@ let pages: any[] = [];
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
-    const pageIndex = pages.findIndex(p => p.id === params.id);
+    const pageIndex = pages.findIndex(p => p.id === id);
 
     if (pageIndex === -1) {
       return NextResponse.json(
@@ -28,7 +29,7 @@ export async function PUT(
     }
 
     // Check if slug is taken by another page
-    if (pages.some(p => p.slug === body.slug && p.id !== params.id)) {
+    if (pages.some(p => p.slug === body.slug && p.id !== id)) {
       return NextResponse.json(
         { error: 'Энэ slug аль хэдийн ашиглагдаж байна' },
         { status: 400 }
@@ -62,10 +63,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const pageIndex = pages.findIndex(p => p.id === params.id);
+    const { id } = await params;
+    const pageIndex = pages.findIndex(p => p.id === id);
 
     if (pageIndex === -1) {
       return NextResponse.json(

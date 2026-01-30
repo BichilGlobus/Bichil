@@ -60,7 +60,7 @@ export default function AboutAdminPage() {
     }, 500)
   }
 
-  const handleSaveGovernance = (data: Governance) => {
+  const handleSaveGovernance = (data: any) => {
     setLoading(true)
     setTimeout(() => {
       console.log('Saving governance:', data)

@@ -260,7 +260,7 @@ const createDefaultData = (): ProductData => ({
 })
 
 export default function LandCollateralLoanAdminPage() {
-  const { data, setData, saveSuccess, handleSave: handleLocalSave, handleReset } = useSaveReset<ProductData>('productLand', createDefaultData)
+  const { data, setData, saveSuccess, handleSave: handleLocalSave, handleReset } = useSaveReset<ProductData>('productLand', createDefaultData())
   const [previewLang, setPreviewLang] = useState<'mn' | 'en'>('mn')
   const [isDirty, setIsDirty] = useState(false)
   const [saving, setSaving] = useState(false)
